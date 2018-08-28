@@ -1,12 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
-import React, {Component} from 'react';
+import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import ShoppingList from './src/screens/ShoppingList.js';
 import AddProduct from './src/screens/AddProduct.js';

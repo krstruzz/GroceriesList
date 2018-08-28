@@ -25,18 +25,17 @@ export default class ShoppingList extends React.Component {
         };
     }
 
-    _handleProductPress(product) {
+    _handleProductPress = (product) => {
         this.state.products.forEach(p => {
             if (product.id === p.id) {
                 p.gotten = !p.gotten;
             }
             return p;
         });
-
         this.setState({ products: this.state.products });
     }
 
-    _handleAddProductPress() {
+    _handleAddProductPress = () => {
         this.props.navigation.navigate('AddProduct', {
             addProduct: product => {
                 this.setState({
@@ -52,7 +51,7 @@ export default class ShoppingList extends React.Component {
         });
     }
 
-    _handleClearPress() {
+    _handleClearPress = () => {
         Alert.alert('Clear all items?', null, [
         { text: "Cancel" },
         { text: 'Ok', onPress: () => this.setState({ products: [] }) }
@@ -69,7 +68,7 @@ export default class ShoppingList extends React.Component {
                                 return (
                                     <ListItem
                                         key={p.id}
-                                        onPress={()=>this._handleProductPress(p)}
+                                        onPress={() => this._handleProductPress(p)}
                                     >
                                         <Body>
                                         <Text style={{color: p.gotten ? '#bbb' : '#000'}}>
@@ -79,7 +78,7 @@ export default class ShoppingList extends React.Component {
                                         <Right>
                                             <CheckBox
                                                 checked={p.gotten}
-                                                onPress={()=>this._handleProductPress(p)}
+                                                onPress={() => this._handleProductPress(p)}
                                             />
                                         </Right>
                                     </ListItem>
@@ -91,16 +90,16 @@ export default class ShoppingList extends React.Component {
                 <Fab
                     style={{ backgroundColor: '#5067FF' }}
                     position="bottomRight"
-                    onPress={()=>this._handleAddProductPress(this)}
+                    onPress={this._handleAddProductPress}
                 >
                     <Icon name="add" />
                 </Fab>
                 <Fab
                     style={{ backgroundColor: 'red' }}
                     position="bottomLeft"
-                    onPress={()=>this._handleClearPress(this)}
+                    onPress={this._handleClearPress}
                 >
-                    <Icon ios="ios-remove" android="md-remove" />
+                    <Icon ios="ios-remove" android="md-remove"/>
                 </Fab>
             </Container>
         );
